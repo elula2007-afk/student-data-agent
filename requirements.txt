@@ -9,5 +9,6 @@ pandas
 plotly
 mcp
 httpx<0.28.0
+httpx2
 uvicorn
 starlette
