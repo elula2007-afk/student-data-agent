@@ -7,8 +7,7 @@ psycopg2-binary
 python-dotenv
 pandas
 plotly
-mcp
+mcp==1.0.0
 httpx<0.28.0
-httpx2
 uvicorn
 starlette
