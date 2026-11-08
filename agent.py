@@ -4,6 +4,7 @@ from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
 from mcp_server import list_tables, describe_table, run_query
 from langchain_core.tools import tool
+from langgraph.checkpoint.memory import MemorySaver
 
 load_dotenv()
 
@@ -43,4 +44,5 @@ Then, output a valid JSON object (WITHOUT markdown code blocks) at the very end 
 - "data": an array of objects with x_col and y_col or [].
 - "visualization": an object with type, x, y, and title, or null.
 """
-agent_executor = create_react_agent(llm, tools, prompt=system_prompt)
+memory = MemorySaver()
+agent_executor = create_react_agent(llm, tools, prompt=system_prompt, checkpointer=memory)
