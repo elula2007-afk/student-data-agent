@@ -46,8 +46,8 @@ if prompt := st.chat_input("what would you like to ask?"):
                 formatted_messages = [(m["role"], m["content"]) for m in st.session_state.messages]
 
                 response = agent_executor.invoke(
-                    {"messages": formatted_messages},
-                    config={"recursion_limit": 60}
+                    {"messages": [("user", prompt)]},
+                    config={"configurable": {"thread_id": "session2"}, "recursion_limit": 60}
                 )
                 
                 ai_message = response["messages"][-1].content
